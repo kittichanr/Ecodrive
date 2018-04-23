@@ -75,7 +75,7 @@ export default class Login extends Component {
                 
             if(res.success === true){
                 AsyncStorage.setItem('user', res.user);
-                this.props.navigation.navigate('Profile');
+                this.props.navigation.navigate('Map');
             }
             else{
                 alert(res.message);
