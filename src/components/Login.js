@@ -12,7 +12,6 @@ import {
 import { StackNavigator } from 'react-navigation';
 
 
-
 export default class Login extends Component {
 
     constructor(props) {
@@ -75,7 +74,7 @@ export default class Login extends Component {
                 
             if(res.success === true){
                 AsyncStorage.setItem('user', res.user);
-                this.props.navigation.navigate('Map');
+                this.props.navigation.navigate('DisplayValue');
             }
             else{
                 alert(res.message);
