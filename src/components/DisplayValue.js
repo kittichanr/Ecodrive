@@ -5,164 +5,186 @@ export default class DisplayValue extends React.Component {
  constructor(props) {
       super(props);
       this.state = {
-        fuelrate: '',
+    co2:'',
+    fuelrate:'',
+    acceleration:'',
+    StandardFuelrate : 4.3
     }
   }
+
+  componentWillMount(){
+    return fetch('https://ecodrive.careerity.me/getValueEco/5aeacdbd7c6f05930cbee3e8')
+      .then((response) => response.json())
+      .then((responseJson) => {
+        this.setState({
+          co2: responseJson.co2,
+          fuelrate: responseJson.fuelrate,
+          acceleration:responseJson.acceleration
+        }, function(){
+
+        });
+      })
+      .catch((error) =>{
+        console.error(error);
+      });
+  }
+
+
+  Test1(){
+   
+if(this.state.fuelrate == this.state.StandardFuelrate){ 
   
-  Test1=()=>{
-    fetch('https://ecodrive.careerity.me/getValueEco/5aeacdbd7c6f05930cbee3e8', {
-  method: 'POST',
-  headers: {
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    fuelrate: 'fuelrate',
-  }),
-});
-      if(this.state.fuelrate = 4.1){
-      return <View style={styles.footer}>
-      <View style={{flex: 1, flexDirection: 'row'}}>
-      <View style={{left:15,width: 90, height: 100, backgroundColor: 'white',borderColor:'black',borderWidth:1}} >
-      <Text style={{fontSize:50, alignSelf:'center', color:'black'}}>43</Text>
-      <Text style={{fontSize:15, alignSelf:'center', color:'black', bottom:-1}}>%</Text>
-      <Text>{this.state.fuelrate}</Text>
+  return (
+  <View style={styles.footer}>
+  <View style={styles.box}>
+  <View style={styles.BgBox1} >
+  <Text style={styles.TextData}>{this.state.acceleration}</Text>
+  <Text style={styles.TextUnit}>%</Text>
+  </View>
+  <View style={styles.box}>
+  <View style={styles.BgBox2} >
+  <Text style={styles.TextData}>{this.state.fuelrate}</Text>
+  <Text style={styles.TextUnit}>Km/L</Text>
+  </View>
+  </View>
+  <View style={styles.box}>
+  <View style={styles.BgBox3} >
+  <Text style={styles.TextData}>{this.state.co2}</Text>
+  <Text style={styles.TextUnit}>g/Km</Text>
+  </View>
+  </View>
+</View>
+  </View>
+  );
+ return null;
+      }
+     
+  if (this.state.fuelrate < this.state.StandardFuelrate){
+       
+        return (
+      <View style={styles.footer1z}>
+      <View style={styles.box}>
+      <View style={styles.BgBox1} >
+      <Text style={styles.TextData}>{this.state.acceleration}</Text>
+      <Text style={styles.TextUnit}>%</Text>
       </View>
-      <View style={{flex: 1, flexDirection: 'row'}}>
-      <View style={{left:45,width: 90, height: 100, backgroundColor: 'white',borderColor:'black',borderWidth:1}} >
-      <Text style={{fontSize:50, alignSelf:'center', color:'black'}}>21</Text>
-      <Text style={{fontSize:15, alignSelf:'center', color:'black', bottom:-1}}>Km/L</Text>
-      </View>
-      </View>
-      <View style={{flex: 1, flexDirection: 'row'}}>
-      <View style={{left:25,width: 90, height: 100, backgroundColor: 'white',borderColor:'black',borderWidth:1}} >
-      <Text style={{fontSize:50, alignSelf:'center', color:'black'}}>126</Text>
-      <Text style={{fontSize:15, alignSelf:'center', color:'black', bottom:-1}}>g/Km</Text>
-      </View>
-      </View>
-    </View>
-            </View>
-      }else if (this.state.fuelRate <= 4.3){
-        return <View style={styles.footer1z}>
-      <View style={{flex: 1, flexDirection: 'row'}}>
-      <View style={{left:15,width: 90, height: 100, backgroundColor: 'white',borderColor:'black',borderWidth:1}} >
-      <Text style={{fontSize:50, alignSelf:'center', color:'black'}}>43</Text>
-      <Text style={{fontSize:15, alignSelf:'center', color:'black', bottom:-1}}>%</Text>
-      </View>
-      <View style={{flex: 1, flexDirection: 'row'}}>
-      <View style={{left:45,width: 90, height: 100, backgroundColor: 'white',borderColor:'black',borderWidth:1}} >
-      <Text style={{fontSize:50, alignSelf:'center', color:'black'}}>21</Text>
-      <Text style={{fontSize:15, alignSelf:'center', color:'black', bottom:-1}}>Km/L</Text>
+      <View style={styles.box}>
+      <View style={styles.BgBox2} >
+      <Text style={styles.TextData}>{this.state.fuelrate}</Text>
+      <Text style={styles.TextUnit}>Km/L</Text>
       </View>
       </View>
-      <View style={{flex: 1, flexDirection: 'row'}}>
-      <View style={{left:25,width: 90, height: 100, backgroundColor: 'white',borderColor:'black',borderWidth:1}} >
-      <Text style={{fontSize:50, alignSelf:'center', color:'black'}}>126</Text>
-      <Text style={{fontSize:15, alignSelf:'center', color:'black', bottom:-1}}>g/Km</Text>
+      <View style={styles.box}>
+      <View style={styles.BgBox3} >
+      <Text style={styles.TextData}>{this.state.co2}</Text>
+      <Text style={styles.TextUnit}>g/Km</Text>
       </View>
       </View>
     </View>
             </View>
-      }else{
+        );
+        return null;
+      }
+      else{
         return <View style={styles.footer2z}>
-        <View style={{flex: 1, flexDirection: 'row'}}>
-        <View style={{left:15,width: 90, height: 100, backgroundColor: 'white',borderColor:'black',borderWidth:1}} >
-        <Text style={{fontSize:50, alignSelf:'center', color:'black'}}>43</Text>
-        <Text style={{fontSize:15, alignSelf:'center', color:'black', bottom:-1}}>%</Text>
+        <View style={styles.box}>
+        <View style={styles.BgBox1} >
+        <Text style={styles.TextData}>{this.state.acceleration}</Text>
+        <Text style={styles.TextUnit}>%</Text>
         </View>
-        <View style={{flex: 1, flexDirection: 'row'}}>
-        <View style={{left:45,width: 90, height: 100, backgroundColor: 'white',borderColor:'black',borderWidth:1}} >
-        <Text style={{fontSize:50, alignSelf:'center', color:'black'}}>21</Text>
-        <Text style={{fontSize:15, alignSelf:'center', color:'black', bottom:-1}}>Km/L</Text>
+        <View style={styles.box}>
+        <View style={styles.BgBox2} >
+        <Text style={styles.TextData}>{this.state.fuelrate}</Text>
+        <Text style={styles.TextUnit}>Km/L</Text>
         </View>
         </View>
-        <View style={{flex: 1, flexDirection: 'row'}}>
-        <View style={{left:25,width: 90, height: 100, backgroundColor: 'white',borderColor:'black',borderWidth:1}} >
-        <Text style={{fontSize:50, alignSelf:'center', color:'black'}}>126</Text>
-        <Text style={{fontSize:15, alignSelf:'center', color:'black', bottom:-1}}>g/Km</Text>
+        <View style={styles.box}>
+        <View style={styles.BgBox3}>
+        <Text style={styles.TextData}>{this.state.co2}</Text>
+        <Text style={styles.TextUnit}>g/Km</Text>
         </View>
         </View>
       </View>
               </View>
       }
   }
-
   render() {
     return(
       <View style={styles.mainviewStyle}>
-        <ContainerView/>
+        {/* <ContainerView/> */}
         { this.Test1() }
       </View>
     );
   }
+
 }
 
-class ContainerView extends React.Component {
-constructor(props) {
-      super(props);
-      this.state = {
-        fuelrate: '',
-    }
+// class ContainerView extends React.Component {
+// constructor(props) {
+//       super(props);
+//       this.state = {
+//         fuelrate: '',
+//     }
   
-}
-Test=()=>{
-    fetch('https://ecodrive.careerity.me/getValueEco/5aeacdbd7c6f05930cbee3e8', {
-        method: 'POST',
-          headers:{
-             Accept: 'application/json',
-            'Content-Type': 'application/json',
+// }
+// Test=()=>{
+//     fetch('https://ecodrive.careerity.me/getValueEco/5aeacdbd7c6f05930cbee3e8', {
+//         method: 'POST',
+//           headers:{
+//              Accept: 'application/json',
+//             'Content-Type': 'application/json',
         
-          },
-          body: JSON.stringify({
-              fuelrate: this.state.fuelrate,
-          })
-      })
-      .then((response) => response.json())
-      .then ((res) =>{
+//           },
+//           body: JSON.stringify({
+//               fuelrate: this.state.fuelrate,
+//           })
+//       })
+//       .then((response) => response.json())
+//       .then ((res) =>{
                 
-            if(res.success === true){
-                AsyncStorage.setItem('fuelrate', res.fuelrate);
-            }
-            else{
-                alert(res.message);
-            }
-      })
-      .done();
-    if(this.state.fuelRate = 4.3){
-    return <View style={{width: 1000, height: 80, backgroundColor: 'white', borderColor: 'black', borderWidth:0.2}} >    
- <Image style={styles.footerText1}
-    source={require('../image/16.png')}/>
-    <Image style={styles.footerText2}
-          source={require('../image/17.png')}
-        />
-    </View>
-    }else if(this.state.fuelRate < 4.3){
-        return <View style={{width: 1000, height: 80, backgroundColor: '#84e184', borderColor: 'black', borderWidth:0.2}} >    
- <Image style={styles.footerText1}
-    source={require('../image/9.png')}/>
-    <Image style={styles.footerText2}
-          source={require('../image/8.png')}
-        />
-    </View>
-    }else if(a=='3'){
-        return <View style={{width: 1000, height: 80, backgroundColor: '#ff3333', borderColor: 'black', borderWidth:0.2}} >    
- <Image style={styles.footerText1}
-    source={require('../image/11.png')}/>
-    <Image style={styles.footerText2}
-          source={require('../image/13.png')}
-        />
-    </View>
-    }
-}
+//             if(res.success === true){
+//                 AsyncStorage.setItem('fuelrate', res.fuelrate);
+//             }
+//             else{
+//                 alert(res.message);
+//             }
+//       })
+//       .done();
+//     if(this.state.fuelRate = 4.3){
+//     return <View style={{width: 1000, height: 80, backgroundColor: 'white', borderColor: 'black', borderWidth:0.2}} >    
+//  <Image style={styles.footerText1}
+//     source={require('../image/16.png')}/>
+//     <Image style={styles.footerText2}
+//           source={require('../image/17.png')}
+//         />
+//     </View>
+//     }else if(this.state.fuelRate < 4.3){
+//         return <View style={{width: 1000, height: 80, backgroundColor: '#84e184', borderColor: 'black', borderWidth:0.2}} >    
+//  <Image style={styles.footerText1}
+//     source={require('../image/9.png')}/>
+//     <Image style={styles.footerText2}
+//           source={require('../image/8.png')}
+//         />
+//     </View>
+//     }else if(a=='3'){
+//         return <View style={{width: 1000, height: 80, backgroundColor: '#ff3333', borderColor: 'black', borderWidth:0.2}} >    
+//  <Image style={styles.footerText1}
+//     source={require('../image/11.png')}/>
+//     <Image style={styles.footerText2}
+//           source={require('../image/13.png')}
+//         />
+//     </View>
+//     }
+// }
 
-render() {
-    return(
-      <ScrollView style = {styles.scrollViewStyle}>
-          { this.Test() }
-      </ScrollView>
-    );
-  }
-}
+// render() {
+//     return(
+//       <ScrollView style = {styles.scrollViewStyle}>
+//           { this.Test() }
+//       </ScrollView>
+//     );
+//   }
+// }
 
 var styles = StyleSheet.create({
   mainviewStyle: {
@@ -295,7 +317,49 @@ textStyle: {
 },
 scrollViewStyle: {
   borderColor: 'white'
+},
+box:{
+  flex: 1, 
+  flexDirection: 'row'
+},
+BgBox1:{
+  left:15,
+  width: 90, 
+  height: 100, 
+  backgroundColor: 'white',
+  borderColor:'black',
+  borderWidth:1
+},
+BgBox2:{
+  left:45,
+  width: 90, 
+  height: 100, 
+  backgroundColor: 'white',
+  borderColor:'black',
+  borderWidth:1
+},
+BgBox3:{
+  left:25,
+  width: 90, 
+  height: 100, 
+  backgroundColor: 'white',
+  borderColor:'black',
+  borderWidth:1
+},
+TextData:{
+  fontSize:50, 
+  alignSelf:'center', 
+  color:'black'
+},
+TextUnit:{
+  fontSize:15, 
+  alignSelf:'center', 
+  color:'black', 
+  bottom:-1
 }
 });
+
+
+
 
 AppRegistry.registerComponent('EcodriveProject', () => mainview) 
