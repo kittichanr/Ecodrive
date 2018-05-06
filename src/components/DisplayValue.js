@@ -8,7 +8,7 @@ export default class DisplayValue extends React.Component {
     co2:'',
     fuelrate:'',
     acceleration:'',
-    StandardFuelrate : 4.3
+    StandardFuelrate : 3.5
     }
   }
 
@@ -33,7 +33,6 @@ export default class DisplayValue extends React.Component {
   Test1(){
    
 if(this.state.fuelrate == this.state.StandardFuelrate){ 
-  
   return (
   <View style={styles.footer}>
   <View style={styles.box}>
@@ -55,11 +54,9 @@ if(this.state.fuelrate == this.state.StandardFuelrate){
   </View>
 </View>
   </View>
-  );
- return null;
-      }
-     
-  if (this.state.fuelrate < this.state.StandardFuelrate){
+  )
+}
+  else if (this.state.fuelrate < this.state.StandardFuelrate){
        
         return (
       <View style={styles.footer1z}>
@@ -82,11 +79,11 @@ if(this.state.fuelrate == this.state.StandardFuelrate){
       </View>
     </View>
             </View>
-        );
-        return null;
+        )
       }
       else{
-        return <View style={styles.footer2z}>
+        return ( 
+        <View style={styles.footer2z}>
         <View style={styles.box}>
         <View style={styles.BgBox1} >
         <Text style={styles.TextData}>{this.state.acceleration}</Text>
@@ -106,86 +103,85 @@ if(this.state.fuelrate == this.state.StandardFuelrate){
         </View>
       </View>
               </View>
+        )
       }
   }
   render() {
     return(
       <View style={styles.mainviewStyle}>
-        {/* <ContainerView/> */}
+        {<ContainerView/>}
         { this.Test1() }
       </View>
     );
-  }
-
+  }  
 }
 
-// class ContainerView extends React.Component {
-// constructor(props) {
-//       super(props);
-//       this.state = {
-//         fuelrate: '',
-//     }
-  
-// }
-// Test=()=>{
-//     fetch('https://ecodrive.careerity.me/getValueEco/5aeacdbd7c6f05930cbee3e8', {
-//         method: 'POST',
-//           headers:{
-//              Accept: 'application/json',
-//             'Content-Type': 'application/json',
+
+class ContainerView extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+  co2:'',
+  fuelrate:'',
+  acceleration:'',
+  StandardFuelrate : 3.5
+  }
+}
+
+componentWillMount(){
+  return fetch('https://ecodrive.careerity.me/getValueEco/5aeacdbd7c6f05930cbee3e8')
+    .then((response) => response.json())
+    .then((responseJson) => {
+      this.setState({
+        co2: responseJson.co2,
+        fuelrate: responseJson.fuelrate,
+        acceleration:responseJson.acceleration
+      }, function(){
+
+      });
+    })
+    .catch((error) =>{
+      console.error(error);
+    });
+}
+
+
+Test(){
+ 
+if(this.state.fuelrate == this.state.StandardFuelrate){ 
+return (
+          <View style={styles.Nav1}>     
+         <Image style={styles.footerText1} source={require('../image/16.png')}/> 
+            <Image style={styles.footerText2} source={require('../image/17.png')}/> 
+            </View>
+)
+}
+else if(this.state.fuelrate < this.state.StandardFuelrate){ 
+  return (
+            <View style={styles.Nav2}>     
+           <Image style={styles.footerText1} source={require('../image/9.png')}/> 
+              <Image style={styles.footerText2} source={require('../image/8.png')}/> 
+              </View>
+  )
+        } 
+        else{ 
+          return (
+                    <View style={styles.Nav3}>     
+                   <Image style={styles.footerText1} source={require('../image/11.png')}/> 
+                      <Image style={styles.footerText2} source={require('../image/13.png')}/> 
+                      </View>
+          )
+                } 
+             }
+        render() { 
+            return( 
+              <ScrollView style = {styles.scrollViewStyle}> 
+                  { this.Test() } 
+              </ScrollView> 
+            ); 
+          }
+                  } 
         
-//           },
-//           body: JSON.stringify({
-//               fuelrate: this.state.fuelrate,
-//           })
-//       })
-//       .then((response) => response.json())
-//       .then ((res) =>{
-                
-//             if(res.success === true){
-//                 AsyncStorage.setItem('fuelrate', res.fuelrate);
-//             }
-//             else{
-//                 alert(res.message);
-//             }
-//       })
-//       .done();
-//     if(this.state.fuelRate = 4.3){
-//     return <View style={{width: 1000, height: 80, backgroundColor: 'white', borderColor: 'black', borderWidth:0.2}} >    
-//  <Image style={styles.footerText1}
-//     source={require('../image/16.png')}/>
-//     <Image style={styles.footerText2}
-//           source={require('../image/17.png')}
-//         />
-//     </View>
-//     }else if(this.state.fuelRate < 4.3){
-//         return <View style={{width: 1000, height: 80, backgroundColor: '#84e184', borderColor: 'black', borderWidth:0.2}} >    
-//  <Image style={styles.footerText1}
-//     source={require('../image/9.png')}/>
-//     <Image style={styles.footerText2}
-//           source={require('../image/8.png')}
-//         />
-//     </View>
-//     }else if(a=='3'){
-//         return <View style={{width: 1000, height: 80, backgroundColor: '#ff3333', borderColor: 'black', borderWidth:0.2}} >    
-//  <Image style={styles.footerText1}
-//     source={require('../image/11.png')}/>
-//     <Image style={styles.footerText2}
-//           source={require('../image/13.png')}
-//         />
-//     </View>
-//     }
-// }
-
-// render() {
-//     return(
-//       <ScrollView style = {styles.scrollViewStyle}>
-//           { this.Test() }
-//       </ScrollView>
-//     );
-//   }
-// }
-
 var styles = StyleSheet.create({
   mainviewStyle: {
   flex: 1,
@@ -214,6 +210,27 @@ footer: {
   height:175,
   alignItems:'center',
   borderColor:'black',
+  borderWidth:0.2,
+},
+Nav1:{
+  width: 1000, 
+  height: 80, 
+  backgroundColor: 'white', 
+  borderColor: 'black', 
+  borderWidth:0.2,
+},
+Nav2:{
+  width: 1000, 
+  height: 80, 
+  backgroundColor: '#84e184', 
+  borderColor: 'black', 
+  borderWidth:0.2,
+},
+Nav3:{
+  width: 1000, 
+  height: 80, 
+  backgroundColor: '#ff3333', 
+  borderColor: 'black', 
   borderWidth:0.2,
 },
 footer1z: {
