@@ -10,6 +10,7 @@ import Login from './src/components/Login'
 import Profile from './src/components/Profile'
 import Map from './src/components/Map'
 import DisplayValue from './src/components/DisplayValue'
+import FormInput from './src/components/FormInput'
 
 const Application = StackNavigator({
 Home:{ screen: Login},
@@ -23,7 +24,7 @@ Map:{screen : DisplayValue},
 export default class App extends Component {
   render() {
     return (
-        <DisplayValue/> 
+        <FormInput/>
     );
   }
 }
