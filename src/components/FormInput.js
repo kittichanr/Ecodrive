@@ -49,7 +49,7 @@ export default class Mynewproject extends Component {
 
           <View style={{marginBottom : 10}}>
  
-            <Button title='Call Normal If-Else' onPress={this.Simple_If_Else} />
+            <Button title='Call Normal If-Else' onPress={this.componentDidUpdate} />
  
           </View>
       
