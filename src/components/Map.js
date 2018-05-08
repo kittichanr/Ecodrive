@@ -33,7 +33,7 @@ class Map extends Component {
             style={styles.button}
             onPress={() => this.openSearchModal()}
           >
-          <DisplayValue/>
+          
             <Text>Open Place Picker</Text>
           </TouchableOpacity>
         </View>
