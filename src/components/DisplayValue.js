@@ -1,5 +1,5 @@
 import React, {PropTypes,} from 'react';
-import {Alert, Button, Platform, TextInput,TouchableOpacity, KeyboardAvoidingView, View, Text, StyleSheet,TouchableHighlight,ScrollView,Image, Component, AppRegistry, AsyncStorage} from "react-native";
+import {Alert, Button, Platform, TextInput,TouchableOpacity, KeyboardAvoidingView, View, Text, StyleSheet,TouchableHighlight,ScrollView,Image, Component, AppRegistry, AsyncStorage,RefreshControl} from "react-native";
 
 export default class DisplayValue extends React.Component {
  constructor(props) {
@@ -8,11 +8,12 @@ export default class DisplayValue extends React.Component {
     co2:'',
     fuelrate:'',
     acceleration:'',
-    StandardFuelrate : 3.5
+    StandardFuelrate : 3.5,
+ 
     }
   }
 
-  componentWillMount(){
+ componentDidMount(){
     return fetch('https://ecodrive.careerity.me/getValueEco/5aeacdbd7c6f05930cbee3e8')
       .then((response) => response.json())
       .then((responseJson) => {
@@ -37,7 +38,7 @@ if(this.state.fuelrate == this.state.StandardFuelrate){
   <View style={styles.footer}>
   <View style={styles.box}>
   <View style={styles.BgBox1} >
-  <Text style={styles.TextData}>{this.state.acceleration}</Text>
+  <Text style={styles.TextData}>{this.state.acceleratio}</Text>
   <Text style={styles.TextUnit}>%</Text>
   </View>
   <View style={styles.box}>
@@ -102,6 +103,7 @@ if(this.state.fuelrate == this.state.StandardFuelrate){
         </View>
         </View>
       </View>
+    
               </View>
         )
       }
