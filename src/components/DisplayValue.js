@@ -8,7 +8,7 @@ export default class DisplayValue extends React.Component {
     co2:'',
     fuelrate:'',
     acceleration:'',
-    StandardFuelrate : 3.5,
+    StandardFuelrate : 23.3,
  
     }
   }
@@ -38,7 +38,7 @@ if(this.state.fuelrate == this.state.StandardFuelrate){
   <View style={styles.footer}>
   <View style={styles.box}>
   <View style={styles.BgBox1} >
-  <Text style={styles.TextData}>{this.state.acceleratio}</Text>
+  <Text style={styles.TextData}>{this.state.acceleration}</Text>
   <Text style={styles.TextUnit}>%</Text>
   </View>
   <View style={styles.box}>
@@ -126,7 +126,7 @@ class ContainerView extends React.Component {
   co2:'',
   fuelrate:'',
   acceleration:'',
-  StandardFuelrate : 3.5
+  StandardFuelrate : 23.3
   }
 }
 
@@ -366,15 +366,16 @@ BgBox3:{
   borderWidth:1
 },
 TextData:{
-  fontSize:50, 
+  fontSize:30, 
   alignSelf:'center', 
   color:'black'
 },
 TextUnit:{
+  
   fontSize:15, 
   alignSelf:'center', 
   color:'black', 
-  bottom:-1
+  bottom:-20
 }
 });
 
