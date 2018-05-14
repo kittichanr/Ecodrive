@@ -165,6 +165,7 @@ return (
           <Text>SUZUKI SWIFT GLX-Navi 1.2L CVT</Text> 
           <Text>Fuelrate: 23.3 KM/L</Text> 
           <Text>CO2 : 100 G/KM</Text> 
+          <Text>FuelType : E20</Text> 
          <Image style={styles.footerText1} source={require('../image/16.png')}/> 
             <Image style={styles.footerText2} source={require('../image/17.png')}/> 
             </View>
@@ -176,6 +177,7 @@ else if(this.state.fuelrate > this.state.StandardFuelrate){
           <Text>SUZUKI SWIFT GLX-Navi 1.2L CVT</Text> 
           <Text>Fuelrate: 23.3 KM/L</Text> 
           <Text>CO2 : 100 G/KM</Text> 
+          <Text>FuelType : E20</Text> 
           <Image style={styles.footerText1} source={require('../image/9.png')}/> 
               <Image style={styles.footerText2} source={require('../image/8.png')}/> 
               </View>
@@ -187,6 +189,7 @@ else if(this.state.fuelrate > this.state.StandardFuelrate){
                   <Text>SUZUKI SWIFT GLX-Navi 1.2L CVT</Text> 
                   <Text>Fuelrate: 23.3 KM/L</Text> 
                   <Text>CO2 : 100 G/KM</Text> 
+                  <Text>FuelType : E20</Text> 
                    <Image style={styles.footerText1} source={require('../image/11.png')}/> 
                       <Image style={styles.footerText2} source={require('../image/13.png')}/> 
                       </View>
