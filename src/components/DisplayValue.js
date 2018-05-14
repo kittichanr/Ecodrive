@@ -60,7 +60,7 @@ if(this.state.fuelrate == this.state.StandardFuelrate){
   </View>
   )
 }
-  else if (this.state.fuelrate < this.state.StandardFuelrate){
+  else if (this.state.fuelrate > this.state.StandardFuelrate){
        
         return (
       <View style={styles.footer1z}>
@@ -162,22 +162,31 @@ Test(){
 if(this.state.fuelrate == this.state.StandardFuelrate){ 
 return (
           <View style={styles.Nav1}>     
+          <Text>SUZUKI SWIFT GLX-Navi 1.2L CVT</Text> 
+          <Text>Fuelrate: 23.3 KM/L</Text> 
+          <Text>CO2 : 100 G/KM</Text> 
          <Image style={styles.footerText1} source={require('../image/16.png')}/> 
             <Image style={styles.footerText2} source={require('../image/17.png')}/> 
             </View>
 )
 }
-else if(this.state.fuelrate < this.state.StandardFuelrate){ 
+else if(this.state.fuelrate > this.state.StandardFuelrate){ 
   return (
             <View style={styles.Nav2}>     
-           <Image style={styles.footerText1} source={require('../image/9.png')}/> 
+          <Text>SUZUKI SWIFT GLX-Navi 1.2L CVT</Text> 
+          <Text>Fuelrate: 23.3 KM/L</Text> 
+          <Text>CO2 : 100 G/KM</Text> 
+          <Image style={styles.footerText1} source={require('../image/9.png')}/> 
               <Image style={styles.footerText2} source={require('../image/8.png')}/> 
               </View>
   )
         } 
         else{ 
           return (
-                    <View style={styles.Nav3}>     
+                    <View style={styles.Nav3}>    
+                  <Text>SUZUKI SWIFT GLX-Navi 1.2L CVT</Text> 
+                  <Text>Fuelrate: 23.3 KM/L</Text> 
+                  <Text>CO2 : 100 G/KM</Text> 
                    <Image style={styles.footerText1} source={require('../image/11.png')}/> 
                       <Image style={styles.footerText2} source={require('../image/13.png')}/> 
                       </View>
@@ -297,13 +306,13 @@ footer3: {
     backgroundColor:'white',
   },
 footerText1: {
-    bottom: -5,
+    bottom: 50,
     left: 195,
     width: 70,
     height: 70
   },
 footerText2: {
-    bottom: 60,
+    bottom:115,
     left: 285,
     width: 58,
     height: 58

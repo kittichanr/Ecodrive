@@ -14,7 +14,7 @@ import FormInput from './src/components/FormInput'
 
 const Application = StackNavigator({
 Home:{ screen: Login},
-Map:{screen : DisplayValue},
+DisplayValue:{screen : DisplayValue},
 },  { navigationOptions :{
       header: false,
     }
