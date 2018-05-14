@@ -38,17 +38,20 @@ if(this.state.fuelrate == this.state.StandardFuelrate){
   <View style={styles.footer}>
   <View style={styles.box}>
   <View style={styles.BgBox1} >
+  <Text style={styles.TextData1}>acceleration</Text>
   <Text style={styles.TextData}>{this.state.acceleration}</Text>
   <Text style={styles.TextUnit}>%</Text>
   </View>
   <View style={styles.box}>
   <View style={styles.BgBox2} >
+  <Text style={styles.TextData1}>fuelrate</Text>              
   <Text style={styles.TextData}>{this.state.fuelrate}</Text>
   <Text style={styles.TextUnit}>Km/L</Text>
   </View>
   </View>
   <View style={styles.box}>
   <View style={styles.BgBox3} >
+  <Text style={styles.TextData1}>co2</Text>              
   <Text style={styles.TextData}>{this.state.co2}</Text>
   <Text style={styles.TextUnit}>g/Km</Text>
   </View>
@@ -62,18 +65,21 @@ if(this.state.fuelrate == this.state.StandardFuelrate){
         return (
       <View style={styles.footer1z}>
       <View style={styles.box}>
-      <View style={styles.BgBox1} >
+      <View style={styles.BgBox1}>
+      <Text style={styles.TextData1}>acceleration</Text>            
       <Text style={styles.TextData}>{this.state.acceleration}</Text>
       <Text style={styles.TextUnit}>%</Text>
       </View>
       <View style={styles.box}>
       <View style={styles.BgBox2} >
+      <Text style={styles.TextData1}>fuelrate</Text>            
       <Text style={styles.TextData}>{this.state.fuelrate}</Text>
       <Text style={styles.TextUnit}>Km/L</Text>
       </View>
       </View>
       <View style={styles.box}>
       <View style={styles.BgBox3} >
+      <Text style={styles.TextData1}>co2</Text>            
       <Text style={styles.TextData}>{this.state.co2}</Text>
       <Text style={styles.TextUnit}>g/Km</Text>
       </View>
@@ -87,17 +93,20 @@ if(this.state.fuelrate == this.state.StandardFuelrate){
         <View style={styles.footer2z}>
         <View style={styles.box}>
         <View style={styles.BgBox1} >
+        <Text style={styles.TextData1}>acceleration</Text>                    
         <Text style={styles.TextData}>{this.state.acceleration}</Text>
         <Text style={styles.TextUnit}>%</Text>
         </View>
         <View style={styles.box}>
         <View style={styles.BgBox2} >
+        <Text style={styles.TextData1}>fuelrate</Text>                    
         <Text style={styles.TextData}>{this.state.fuelrate}</Text>
         <Text style={styles.TextUnit}>Km/L</Text>
         </View>
         </View>
         <View style={styles.box}>
         <View style={styles.BgBox3}>
+      <Text style={styles.TextData1}>co2</Text>                    
         <Text style={styles.TextData}>{this.state.co2}</Text>
         <Text style={styles.TextUnit}>g/Km</Text>
         </View>
@@ -178,13 +187,16 @@ else if(this.state.fuelrate < this.state.StandardFuelrate){
         render() { 
             return( 
               <ScrollView style = {styles.scrollViewStyle}> 
-                  { this.Test() } 
-              </ScrollView> 
+                  { this.Test() }
+                  <Image style = {{width: 365,height: 380,}}
+                source={require('../image/1234.png')}
+        />
+              </ScrollView>
             ); 
           }
                   } 
         
-var styles = StyleSheet.create({
+                  var styles = StyleSheet.create({
   mainviewStyle: {
   flex: 1,
   flexDirection: 'column',
@@ -365,6 +377,11 @@ BgBox3:{
   borderColor:'black',
   borderWidth:1
 },
+TextData1:{
+  fontSize:15, 
+  alignSelf:'center', 
+  color:'black'
+},
 TextData:{
   fontSize:30, 
   alignSelf:'center', 
@@ -375,7 +392,7 @@ TextUnit:{
   fontSize:15, 
   alignSelf:'center', 
   color:'black', 
-  bottom:-20
+  bottom:-10
 }
 });
 

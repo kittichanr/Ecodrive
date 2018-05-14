@@ -24,7 +24,7 @@ Map:{screen : DisplayValue},
 export default class App extends Component {
   render() {
     return (
-        <DisplayValue/>
+        <Application/>
     );
   }
 }
