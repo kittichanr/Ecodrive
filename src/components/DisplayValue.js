@@ -309,13 +309,13 @@ footer3: {
     backgroundColor:'white',
   },
 footerText1: {
-    bottom: 50,
+    bottom: 70,
     left: 195,
     width: 70,
     height: 70
   },
 footerText2: {
-    bottom:115,
+    bottom:135,
     left: 285,
     width: 58,
     height: 58
